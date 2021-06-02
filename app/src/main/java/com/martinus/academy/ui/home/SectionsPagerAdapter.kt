@@ -9,7 +9,7 @@ import com.martinus.academy.R
 import com.martinus.academy.ui.academy.AcademyFragment
 import com.martinus.academy.ui.bookmark.BookmarkFragment
 
-class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager): FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     companion object {
         @StringRes
@@ -17,13 +17,14 @@ class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager): 
     }
 
     override fun getItem(position: Int): Fragment =
-        when (position) {
-            0 -> AcademyFragment()
-            1 -> BookmarkFragment()
-            else -> Fragment()
-        }
+            when (position) {
+                0 -> AcademyFragment()
+                1 -> BookmarkFragment()
+                else -> Fragment()
+            }
 
     override fun getPageTitle(position: Int): CharSequence = mContext.resources.getString(TAB_TITLES[position])
 
     override fun getCount(): Int = 2
+
 }

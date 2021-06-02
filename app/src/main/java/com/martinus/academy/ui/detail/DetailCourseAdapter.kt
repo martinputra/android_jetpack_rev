@@ -7,7 +7,7 @@ import com.martinus.academy.data.ModuleEntity
 import com.martinus.academy.databinding.ItemsModuleListBinding
 import java.util.*
 
-class DetailCourseAdapter: RecyclerView.Adapter<DetailCourseAdapter.ModuleViewHolder>() {
+class DetailCourseAdapter : RecyclerView.Adapter<DetailCourseAdapter.ModuleViewHolder>() {
 
     private val listModules = ArrayList<ModuleEntity>()
 
@@ -29,9 +29,10 @@ class DetailCourseAdapter: RecyclerView.Adapter<DetailCourseAdapter.ModuleViewHo
 
     override fun getItemCount(): Int = listModules.size
 
-    inner class ModuleViewHolder(private val binding: ItemsModuleListBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ModuleViewHolder(private val binding: ItemsModuleListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(module: ModuleEntity) {
             binding.textModuleTitle.text = module.title
         }
     }
 }
+

@@ -1,7 +1,7 @@
 package com.martinus.academy.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.martinus.academy.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

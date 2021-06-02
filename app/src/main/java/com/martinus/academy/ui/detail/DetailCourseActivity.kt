@@ -37,13 +37,13 @@ class DetailCourseActivity : AppCompatActivity() {
         val adapter = DetailCourseAdapter()
 
         val extras = intent.extras
-        if(extras != null){
+        if (extras != null) {
             val courseId = extras.getString(EXTRA_COURSE)
-            if(courseId != null) {
+            if (courseId != null) {
                 val modules = DataDummy.generateDummyModules(courseId)
                 adapter.setModules(modules)
-                for(course in DataDummy.generateDummyCourses()) {
-                    if(course.courseId == courseId) {
+                for (course in DataDummy.generateDummyCourses()) {
+                    if (course.courseId == courseId) {
                         populateCourse(course)
                     }
                 }
@@ -66,11 +66,11 @@ class DetailCourseActivity : AppCompatActivity() {
         detailContentBinding.textDate.text = resources.getString(R.string.deadline_date, courseEntity.deadline)
 
         Glide.with(this)
-            .load(courseEntity.imagePath)
-            .transform(RoundedCorners(20))
-            .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
-                .error(R.drawable.ic_error))
-            .into(detailContentBinding.imagePoster)
+                .load(courseEntity.imagePath)
+                .transform(RoundedCorners(20))
+                .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error))
+                .into(detailContentBinding.imagePoster)
 
         detailContentBinding.btnStart.setOnClickListener {
             val intent = Intent(this@DetailCourseActivity, CourseReaderActivity::class.java)

@@ -1,7 +1,7 @@
 package com.martinus.academy.ui.reader
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.martinus.academy.R
 import com.martinus.academy.ui.reader.content.ModuleContentFragment
 import com.martinus.academy.ui.reader.list.ModuleListFragment
@@ -17,7 +17,7 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
         setContentView(R.layout.activity_course_reader)
 
         val bundle = intent.extras
-        if(bundle != null) {
+        if (bundle != null) {
             val courseId = bundle.getString(EXTRA_COURSE_ID)
             if (courseId != null) {
                 populateFragment()
@@ -28,8 +28,8 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
     override fun moveTo(position: Int, moduleId: String) {
         val fragment = ModuleContentFragment.newInstance()
         supportFragmentManager.beginTransaction().add(R.id.frame_container, fragment, ModuleContentFragment.TAG)
-            .addToBackStack(null)
-            .commit()
+                .addToBackStack(null)
+                .commit()
     }
 
     override fun onBackPressed() {
@@ -43,7 +43,7 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
     private fun populateFragment() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         var fragment = supportFragmentManager.findFragmentByTag(ModuleListFragment.TAG)
-        if(fragment == null) {
+        if (fragment == null) {
             fragment = ModuleListFragment.newInstance()
             fragmentTransaction.add(R.id.frame_container, fragment, ModuleListFragment.TAG)
             fragmentTransaction.addToBackStack(null)

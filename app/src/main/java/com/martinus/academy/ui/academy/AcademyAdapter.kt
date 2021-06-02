@@ -12,11 +12,11 @@ import com.martinus.academy.databinding.ItemsAcademyBinding
 import com.martinus.academy.ui.detail.DetailCourseActivity
 import java.util.*
 
-class AcademyAdapter: RecyclerView.Adapter<AcademyAdapter.CourseViewHolder>() {
+class AcademyAdapter : RecyclerView.Adapter<AcademyAdapter.CourseViewHolder>() {
     private var listCourses = ArrayList<CourseEntity>()
 
-    fun setCourse(courses: List<CourseEntity>?) {
-        if(courses == null) return
+    fun setCourses(courses: List<CourseEntity>?) {
+        if (courses == null) return
         this.listCourses.clear()
         this.listCourses.addAll(courses)
     }
@@ -33,7 +33,8 @@ class AcademyAdapter: RecyclerView.Adapter<AcademyAdapter.CourseViewHolder>() {
 
     override fun getItemCount(): Int = listCourses.size
 
-    class CourseViewHolder(private val binding: ItemsAcademyBinding): RecyclerView.ViewHolder(binding.root) {
+
+    class CourseViewHolder(private val binding: ItemsAcademyBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(course: CourseEntity) {
             with(binding) {
                 tvItemTitle.text = course.title
@@ -43,12 +44,13 @@ class AcademyAdapter: RecyclerView.Adapter<AcademyAdapter.CourseViewHolder>() {
                     intent.putExtra(DetailCourseActivity.EXTRA_COURSE, course.courseId)
                     itemView.context.startActivity(intent)
                 }
-            Glide.with(itemView.context)
-                .load(course.imagePath)
-                .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
-                    .error(R.drawable.ic_error))
-                .into(imgPoster)
+                Glide.with(itemView.context)
+                        .load(course.imagePath)
+                        .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
+                                .error(R.drawable.ic_error))
+                        .into(imgPoster)
             }
         }
     }
 }
+
